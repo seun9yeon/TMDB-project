@@ -7,11 +7,30 @@ export default function MovieList() {
 
   useEffect(() => {
     async function fetchPost() {
-      const url = `https://api.themoviedb.org/3/movie/now_playing?=6df479b8cb023575db7aca18b3272a6a`;
-      const response = await axios.get(url);
-      const data = response.data;
-      setPosts(data);
+      const options = {
+        method: "GET",
+        url: "https://api.themoviedb.org/3/movie/now_playing",
+        params: { language: "en-US", page: "1" },
+        headers: {
+          accept: "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZGY0NzliOGNiMDIzNTc1ZGI3YWNhMThiMzI3MmE2YSIsIm5iZiI6MTczMDA3NjgwNi4xNjUsInN1YiI6IjY3MWVlMDg2NDU0MmUzNzFmZTBiMDFkYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ZrQFTvEV0MgwIfNl5vShTMmIqvvd_wOz8QCPeTgbiIg",
+        },
+      };
+
+      try {
+        const response = await axios.request(options);
+        console.log(response.data);
+        return response.data;
+      } catch (error) {
+        console.error("Error fetching data", error);
+      }
     }
+
+    //   .request(options)
+    //   .then(res => console.log(res.data))
+    //   .catch(err => console.error(err));
+    // }
 
     fetchPost();
   }, []);
@@ -19,11 +38,11 @@ export default function MovieList() {
   return (
     <div>
       <h2>MovieList</h2>
-      <ul>
         {posts.map((movies) => (
-        <h3>{movies.title}</h3>
-    ))}
-      </ul>
+          <li key={movies.id}>
+            <h3>{movies.image}</h3>
+          </li>
+        ))}
     </div>
   );
 }
