@@ -2,7 +2,7 @@ import React from 'react'
 import { Outlet } from 'react-router-dom';
 import Header from '../componnets/Header';
 
-export default function Rootlayout() {
+export default function RootLayout() {
   return (
     <>
     <Header></Header>
