@@ -35,6 +35,11 @@ export default function MovieList() {
     fetchPost();
   }, []);
 
+  
+  const getImageUrl = (path) => {
+    return `https://image.tmdb.org/t/p/w500${path}`; // 영화 이미지 URL을 반환
+  };
+
   return (
     <div>
       <h2>MovieList</h2>
