@@ -1,0 +1,21 @@
+.movie-list {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.movie-list h1 {
+  font-size: 24px;
+}
+
+.movie-item {
+  align-items: center;
+}
+
+.movie-itemimg{
+  height: 400px;
+}
+
+.button {
+  justify-content: right;
+}
