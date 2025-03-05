@@ -36,16 +36,15 @@ export default function MovieList() {
 
   return (
     <div>
-      <h2>MovieList</h2>
       {posts.map((movie)=>{
         return(
           <div
             key={movie.id}
           >
+          <img src={getImageUrl(movie.poster_path)} alt="" />
           <p>
             {movie.title}
           </p>
-          <img src={getImageUrl(movie.poster_path)} alt="" />
           </div>
         )
       })}
