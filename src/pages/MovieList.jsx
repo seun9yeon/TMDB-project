@@ -19,7 +19,7 @@ export default function MovieList() {
       };
       try {
         const response = await axios.request(options);
-        console.log(response.data.results);
+        console.log(response.data.results || []);
         setPosts(response.data);
       } catch (error) {
         console.error("Error fetching data", error);
@@ -35,20 +35,35 @@ export default function MovieList() {
   };
 
   return (
+    // <div>
+    //   <h2>MovieList</h2>
+    //   {posts.map((movie)=>{
+    //     return(
+    //       <div
+    //         key={movie.id}
+    //       >
+    //       <p>
+    //         {movie.title}
+    //       </p>
+    //       <img src={getImageUrl(movie.poster_path)} alt="" />
+    //       </div>
+    //     )
+    //   })}
+    // </div>
     <div>
-      <h2>MovieList</h2>
-      {posts.map((movie)=>{
-        return(
-          <div
-            key={movie.id}
-          >
-          <p>
-            {movie.title}
-          </p>
-          <img src={getImageUrl(movie.poster_path)} alt="" />
-          </div>
-        )
-      })}
-    </div>  
+    <h2>MovieList</h2>
+    <ul>
+      {Array.isArray(posts) && posts.length > 0 ? ( // posts가 배열인지 확인
+        posts.map((movie) => (
+          <li key={movie.id}>
+            <h3>{movie.title}</h3> {/* 영화 제목을 표시 */} 
+            <img src={getImageUrl(movie.poster_path)} alt="movie poster" />
+          </li>
+        ))
+      ) : (
+        <p>No movies available</p> // 데이터가 없으면 "No movies available" 메시지 표시
+      )}
+    </ul>
+  </div>  
   );
 }
