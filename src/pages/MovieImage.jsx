@@ -6,7 +6,6 @@ export default function MovieImage({ title, poster_path, vote_average }) {
   return (
     <div className ='movie-container'>
       <imge></>
-
     </div>
     <div>MovieImage</div>
   )
