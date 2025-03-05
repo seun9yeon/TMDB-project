@@ -38,9 +38,10 @@ export default function MovieList() {
   return (
     <div>
       <h2>MovieList</h2>
-        {posts.map((movies) => (
+        {data.results.map((movies) => (
           <li key={movies.id}>
             <h3>{movies.image}</h3>
+            <img src= {getImageUrl(movies.poster_path)} alt="movie poster"/>
           </li>
         ))}
     </div>
