@@ -41,6 +41,7 @@ export default function MovieList() {
         return(
           <div
             key={movie.id}
+            className={styles.movie_item}
           >
           <img src={getImageUrl(movie.poster_path)} alt="" />
           <p>{movie.title}</p>
