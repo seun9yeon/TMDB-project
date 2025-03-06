@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-// import "./MovieImage";
+import styles from "../styles/MovieImage.module.css";
 
 export default function MovieList() {
   const [posts, setPosts] = useState([]);
@@ -36,17 +36,14 @@ export default function MovieList() {
   };
 
   return (
-    <div>
+    <div className={styles.movie_list}>
       {posts.map((movie)=>{
         return(
           <div
             key={movie.id}
-            className="moive-list"
           >
-          <div className="movie-item">
           <img src={getImageUrl(movie.poster_path)} alt="" />
           <p>{movie.title}</p>
-          </div>
           </div>
         )
       })}
